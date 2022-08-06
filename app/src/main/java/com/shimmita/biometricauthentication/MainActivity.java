@@ -72,6 +72,30 @@ public class MainActivity extends AppCompatActivity {
 
         //
 
+        biometricPrompt_functionality_implementation = new BiometricPrompt(MainActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+
+                Toast.makeText(MainActivity.this, "Error Occured!->" + errString, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                Toast.makeText(MainActivity.this, "FingerPrint Authentication  Successful Welcome", Toast.LENGTH_LONG).show();
+
+                startActivity(new Intent(MainActivity.this, Successful.class));
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+                Toast.makeText(MainActivity.this, "FingerPrint Authentication Failure!", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
 
         promptInfo_dialog = new BiometricPrompt.PromptInfo.Builder()
 
