@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case BiometricManager.BIOMETRIC_STATUS_UNKNOWN:
                 Toast.makeText(this, "Device Fingerprint Status Unknown!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "probably its not configured to use fingerprint", Toast.LENGTH_SHORT).show();
                 break;
 
         }
